@@ -4,7 +4,9 @@
 
 const path = require('path');
 const webpack = require('webpack');
-
+const packageDefinition = require('../../package.json');
+const targetPackage = require(process.cwd() + '/package.json');
+// console.log('Target package def:', targetPackage)
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
 // 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
 // see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
@@ -27,10 +29,12 @@ module.exports = options => ({
     rules: [
       {
         test: /\.js$/, // Transform all .js files required somewhere with Babel
-        exclude: /node_modules/,
+        include: {
+          test: [/app/, /rpebus-js/, /rcl/],
+        },
         use: {
           loader: 'babel-loader',
-          options: options.babelQuery,
+          options: packageDefinition.babel,
         },
       },
       {
@@ -114,19 +118,28 @@ module.exports = options => ({
     ],
   },
   plugins: options.plugins.concat([
+    new webpack.ProvidePlugin({
+      // make fetch available
+      fetch: 'exports-loader?self.fetch!whatwg-fetch',
+    }),
+
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; Terser will automatically
+    // inside your code for any environment checks; UglifyJS will automatically
     // drop any unreachable code.
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        APP_VERSION: JSON.stringify(targetPackage.version),
+        APP_NAME: JSON.stringify(targetPackage.name),
+        APP_AUTHOR: JSON.stringify(targetPackage.author),
       },
     }),
   ]),
   resolve: {
-    modules: ['node_modules', 'app'],
+    modules: ['node_modules', 'app', 'rcl', 'rpebus-js'],
     extensions: ['.js', '.jsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main'],
+    symlinks: true,
   },
   devtool: options.devtool,
   target: 'web', // Make web variables accessible to webpack, e.g. window

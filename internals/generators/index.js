@@ -18,7 +18,7 @@ module.exports = plop => {
   plop.addHelper('directory', comp => {
     try {
       fs.accessSync(
-        path.join(__dirname, `../../app/containers/${comp}`),
+        path.join(process.cwd(), `app/containers/${comp}`),
         fs.F_OK,
       );
       return `containers/${comp}`;
@@ -29,8 +29,8 @@ module.exports = plop => {
   plop.addHelper('curly', (object, open) => (open ? '{' : '}'));
   plop.setActionType('prettify', (answers, config) => {
     const folderPath = `${path.join(
-      __dirname,
-      '/../../app/',
+      process.cwd(),
+      'app/',
       config.path,
       plop.getHelper('properCase')(answers.name),
       '**.js',

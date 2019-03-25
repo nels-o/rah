@@ -1,6 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { injectGlobal } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+/* eslint no-unused-expressions: 0 */
+injectGlobal`
   html,
   body {
     height: 100%;
@@ -27,5 +28,3 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5em;
   }
 `;
-
-export default GlobalStyle;

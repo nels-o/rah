@@ -2,13 +2,13 @@
 
 These are some things to be aware of when using this boilerplate.
 
-- [Special images in HTML files](#special-images-in-html-files)
-- [Load reducers optimistically](#load-reducers-optimistically)
-- [Exclude modules from Babel processing](#exclude-modules-from-babel-processing)
-- [Running tests in `watch` mode](#running-tests-in-watch-mode)
-- [When in doubt, re-install!](#when-in-doubt-re-install)
-- [Cleaning up Jest cache](#cleaning-up-jest-cache)
-- [Using short_name in Web App manifest](#using-short_name-in-web-app-manifest)
+1.  [Special images in HTML files](#special-images-in-html-files)
+2.  [Load reducers optimistically](#load-reducers-optimistically)
+3.  [Exclude modules from Babel processing](#exclude-modules-from-babel-processing)
+4.  [Running tests in watch mode](#running-tests-in-watch-mode)
+5.  [When in doubt, re-install!](#when-in-doubt-re-install)
+6.  [Cleaning up Jest cache](#cleaning-up-jest-cache)
+7.  [Using short_name in Web App manifest](#using-short_name-in-web-app-manifest)
 
 ## Special images in HTML files
 
@@ -86,12 +86,13 @@ Remove node_modules
 
 - `rm -rf node_modules`
 
-Clear cache
+Using yarn (recommended)
+
+- `yarn install`
+
+Using npm
 
 - `npm cache clean`
-
-Re-install dependencies
-
 - `npm install`
 
 Build project

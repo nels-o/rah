@@ -1,6 +1,37 @@
-// import { take, call, put, select } from 'redux-saga/effects';
+/*
+ *
+ * {{ properCase name }} saga middleware
+ *
+ */
 
-// Individual exports for testing
-export default function* {{ camelCase name }}Saga() {
+import { fork, take } from 'redux-saga/effects';
+
+import { DEFAULT_ACTION } from './constants';
+
+// Handle the side-effects of a dispatched action, e.g.
+//  fetch().then().catch() behavior,
+//  call, put, select from the store,
+export function* defaultSaga() {
   // See example in containers/HomePage/saga.js
 }
+
+// Using a watcher for each saga makes individual sagas cancellable
+//  and allows for granularity of the saga effect used
+export function* defaultSagaWatcher() {
+  yield take(DEFAULT_ACTION, defaultSaga);
+}
+
+/*
+ * This pattern is simple but usable. Always use try/catch in sagas so errors don't end the root saga
+ */
+export function* watchers() {
+  const sagaWatchers = [defaultSagaWatcher];
+  yield all(sagaWatchers.map(fork));
+  // Uncomment these two lines two cancel {{ properCase name }} sagas when a route changes
+  // yield take(LOCATION_CHANGE);
+  // yield all(sagaWatchers.map(cancel));
+}
+
+// All sagas to be loaded
+export default watchers;
+

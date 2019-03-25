@@ -5,7 +5,7 @@
 import { memoryHistory } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import React from 'react';
-import { identity } from 'lodash';
+import identity from 'lodash/identity';
 
 import configureStore from '../../configureStore';
 import injectReducer from '../injectReducer';

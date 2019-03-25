@@ -1,10 +1,8 @@
 import { createSelector } from 'reselect';
 
-const selectRouter = state => state.get('router');
+const selectRoute = state => state.get('route');
 
 const makeSelectLocation = () =>
-  createSelector(selectRouter, routerState =>
-    routerState.get('location').toJS(),
-  );
+  createSelector(selectRoute, routeState => routeState.get('location').toJS());
 
 export { makeSelectLocation };

@@ -1,6 +1,9 @@
 /**
  * Asynchronously loads the component for NotFoundPage
  */
-import loadable from 'loadable-components';
+import Loadable from 'react-loadable';
 
-export default loadable(() => import('./index'));
+export default Loadable({
+  loader: () => import('./index'),
+  loading: () => null,
+});
