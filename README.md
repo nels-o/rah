@@ -1,6 +1,6 @@
 # `rah`
 
-`rah` is the `r`eact `a`pplication `h`arness. It is a combination of project management tools, build system, and development server features derived from [`react-boilerplate`](https://github.com/react-boilerplate/react-boilerplate). Internally at Racepoint, we use this to build static single page applications and unify deployment processes. The goal is simple -- making changes to any application built against `react-boilerplate` requires making manual changes to every project that uses it. That's slow, inefficient, tedious, and no fun at all.
+`rah` is the `r`eact `a`pplication `h`arness. It is a combination of project management tools, build system, and development server features derived from [`react-boilerplate`](https://github.com/react-boilerplate/react-boilerplate). I use this to build static single page applications and unify deployment processes. The goal is simple -- making changes to any application built against `react-boilerplate` requires making manual changes to every project that uses it. That's slow, inefficient, tedious, and no fun at all.
 
 To fix that, we've inverted the server and build components of `react-boilerplate`. Instead of forming the basis of your project's folder structure that functionality is now just another module dependency that can be installed like so:
 
