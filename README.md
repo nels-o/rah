@@ -10,6 +10,8 @@ To fix that, we've inverted the server and build components of `react-boilerplat
 npm install -D git+ssh://git@github.com:nels-o/rah.git
 ```
 
+Yah, it is not on NPM yet. Working on that. Turns out someone has this name. 
+
 ### Usage through NPM scripts
 
 To use it, you will need to add the following to your `package.json`
