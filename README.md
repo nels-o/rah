@@ -7,7 +7,7 @@ To fix that, we've inverted the server and build components of `react-boilerplat
 ### Installation
 
 ```
-npm install -D git+ssh://git@gitlab.com:racepointenergy/website/rah.git
+npm install -D git+ssh://git@github.com:nels-o/rah.git
 ```
 
 ### Usage through NPM scripts
